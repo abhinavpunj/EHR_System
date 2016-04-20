@@ -7,6 +7,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -37,12 +38,13 @@ public class NurseController {
 		patientDao.createPatient(patient);
 	}
 	
-	@POST
-	@Path("/searchPatient")
+	@GET
+	@Path("/searchPatient/{pId}")
 	@RolesAllowed("nurse")
-	public PatientBean searchPatient(PatientBean patient)
+	public PatientBean searchPatient(@PathParam(value = "pId") int patientId)
 	{
-		System.out.println(patient.getPatientId());
+		PatientBean patient = new PatientBean();
+		patient.setPatientId(patientId);
 		patient = patientDao.searchPatient(patient);
 		
 		return patient;
