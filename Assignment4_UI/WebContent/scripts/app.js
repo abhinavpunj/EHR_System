@@ -45,6 +45,11 @@ angular.module('BasicHttpAuthExample', [
 				controller : 'NurseController'
 			})
 			
+			.when('/searchPatient', {
+				templateUrl : 'modules/nurse/views/Nurse-Search.jsp',
+				controller : 'EncounterController'
+			})
+			
 			.when('/patientDetails/:patientId', {
 				templateUrl : 'modules/doctor/views/Doctor-PatientProfile.jsp',
 				controller : 'PatientProfileController',
@@ -62,17 +67,19 @@ angular.module('BasicHttpAuthExample', [
 .run(['$rootScope', '$location', '$cookieStore', '$http',
     function ($rootScope, $location, $cookieStore, $http) {
         // keep user logged in after page refresh
+	
         $rootScope.globals = $cookieStore.get('globals') || {};
         if ($rootScope.globals.currentUser) {
             $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
             $http.defaults.headers.common['AUTH_KEY'] = $rootScope.globals.currentUser.authKey; // jshint ignore:line
-
+            $rootScope.logout = "true";
         }
  
         $rootScope.$on('$locationChangeStart', function (event, next, current) {
             // redirect to login page if not logged in
             if ($location.path() !== '/login' && !$rootScope.globals.currentUser) {
                 $location.path('/login');
+                $rootScope.logout = "false";
             }
         });
     }]);

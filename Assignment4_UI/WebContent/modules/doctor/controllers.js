@@ -3,7 +3,7 @@
 var app = angular.module('Doctor');
 
 app.controller('DoctorController', [ '$scope', '$rootScope', function($scope, $rootScope) {
-	
+	$scope.logout = "true";
 	$scope.name = $rootScope.name;
 	$scope.patients = $rootScope.patients;
 	$scope.personId = $rootScope.personId;

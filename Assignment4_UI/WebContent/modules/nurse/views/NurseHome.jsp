@@ -4,7 +4,7 @@
 			<h4>Hi {{name}} </h4>
 				<ul class="nav nav-pills nav-stacked">
 					<li class="active"><a href="NurseHome.jsp">Register Patient</a></li>
-					<li><a href="Nurse-Search.jsp">Search Patient</a></li>
+					<li><a ng-href="#/searchPatient">Search Patient</a></li>
 				</ul>
 		</div>
 		<div class="col-lg-10">

@@ -11,7 +11,7 @@ angular.module('Doctor')
 
             $http.get('http://localhost:8080/Assignment4_REST/rest/doctor/patientDetails/' + personId + '/' + patientId)
                 .success(function (data, status) {
-                    
+                    callback(data);
                 });
             	
         };

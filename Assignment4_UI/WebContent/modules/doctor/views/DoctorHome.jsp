@@ -1,5 +1,5 @@
 
-	<div ng-app="Doctor" ng-controller="DoctorController" class="row">
+	<div class="row">
 		<div class="col-lg-2">
 				<h4 id="drName">Hi Dr. {{name}} </h4>
 				<ul class="nav nav-pills nav-stacked">

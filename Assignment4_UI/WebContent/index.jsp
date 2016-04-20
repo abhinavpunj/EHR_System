@@ -20,6 +20,9 @@
 
 	<div class="jumbotron">
 		<div class="container">
+		<a href="#/login" ng-show="{{logout}}" class="btn btn-info btn-lg">
+          <span class="glyphicon glyphicon-log-out"></span> Log out
+        </a>
 				<div ng-view></div>
 		</div>
 	</div>

@@ -1,5 +1,5 @@
 
-	<div ng-app="Doctor" ng-controller="PatientProfileController" class="row">
+	<div class="row">
 		<div class="col-lg-2">
 				<h4 id="drName">Dr. {{name}}</h4>
 				<ul class="nav nav-pills nav-stacked">
@@ -18,13 +18,13 @@
 								    <div class="form-group form-group-sm">
 								      <label class="control-label col-sm-2" for="name">Name:</label>
 								      <div class="col-sm-10">
-								        <input type="text" value="{{patient.name}}" class="form-control" id="name" disabled>
+								        <input type="text" ng-model="patient.name" class="form-control" id="name" disabled>
 								      </div>
 								    </div>
 								    <div class="form-group form-group-sm">
 								      <label class="control-label col-sm-2" for="age">Age:</label>
 								      <div class="col-sm-10">          
-								        <input type="text" value="{{patient.age}}" class="form-control" id="age" disabled>
+								        <input type="text" ng-model="patient.age" class="form-control" id="age" disabled>
 								      </div>
 								    </div>
 								    <!-- <div class="form-group form-group-sm">
@@ -36,7 +36,7 @@
 								    <div class="form-group form-group-sm">
 								      <label class="control-label col-sm-2" for="gender">Gender:</label>
 								      <div class="col-sm-10">          
-								        <input type="text" value="{{patient.gender}}" class="form-control" id="gender" disabled>
+								        <input type="text" ng-model="patient.gender" class="form-control" id="gender" disabled>
 								      </div>
 								    </div>
 								    
@@ -49,7 +49,7 @@
 								    <div class="form-group form-group-sm">
 								      <label class="control-label col-sm-2" for="phone">Phone:</label>
 								      <div class="col-sm-10">          
-								        <input type="text" value="{{patient.phone}}" class="form-control" id="phone" disabled>
+								        <input type="text" ng-model="patient.phone" class="form-control" id="phone" disabled>
 								      </div>
 								    </div>
 								 </form>
