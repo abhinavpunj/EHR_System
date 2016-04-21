@@ -45,6 +45,7 @@ public class NurseController {
 	{
 		PatientBean patient = new PatientBean();
 		patient.setPatientId(patientId);
+
 		patient = patientDao.searchPatient(patient);
 		
 		return patient;
