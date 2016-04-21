@@ -15,5 +15,12 @@ angular.module('Doctor')
                 });
             	
         };
+        
+        service.UpdateDiagnosis = function (encounter, callback) {
+			$http.put('http://localhost:8080/Assignment4_REST/rest/doctor/updateDiagnosis', encounter)
+				.success(function (data, status) {
+					callback(data);
+				})
+		}
         return service;
     }]);

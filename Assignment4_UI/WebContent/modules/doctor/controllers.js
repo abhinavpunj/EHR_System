@@ -15,4 +15,22 @@ app.controller('PatientProfileController', [ '$scope', '$routeParams', 'PateintD
 	PateintDetailsService.Details($scope.patientId, $scope.personId, function(data) {
 		$scope.patient = data.patients[0];		
 	})
+	$scope.idSelected = null;
+	$scope.getVitalSign = function (encs) {
+		$scope.idSelected = encs.encounterId;
+		$scope.encounter = encs;
+		$scope.vs = encs.vitalSign;
+		$scope.symptoms = encs.symptoms;
+		$scope.activeMeds = encs.activeMeds;
+		$scope.allergies = encs.allergies;
+	}
+	
+	$scope.updateDiagnosis = function () {
+		
+		$scope.encounter.doctor = $scope.name;
+		$scope.encounter.diagnosis = $scope.diagnosis;
+		PateintDetailsService.UpdateDiagnosis($scope.encounter, function(data) {
+			$scope.diagnosis = null;
+		})
+	}
 }]);

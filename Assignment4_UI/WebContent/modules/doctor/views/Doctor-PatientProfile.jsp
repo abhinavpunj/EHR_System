@@ -68,7 +68,12 @@
                             <!-- <th>Date</th> -->
                         </thead>
                         <tbody id="encList">
-                        	
+                        	<tr ng-click="getVitalSign(encs)" ng-class="encs.encounterId == idSelected ? 'selected' : ''" ng-repeat="encs in patient.encounterHistory">
+                        		<td>{{encs.encounterId}}</td>
+                        		<td>{{encs.chiefComplaint}}</td>
+                        		<td>{{encs.diagnosis}}</td>
+                        		<td>{{encs.doctor}}</td>
+                        	</tr>
                         </tbody>
                     </table>
             </div>
@@ -83,19 +88,19 @@
                     	<table>
                         <tr>
                             <td>Temp:</td>
-                            <td><input id="temp" type="text" disabled> F</td>
+                            <td><input ng-model="vs.temp" id="temp" type="text" disabled> F</td>
                         </tr>
                         <tr>
                             <td>Pulse:</td>
-                            <td><input id="pulse" type="text" disabled /> beats per minute</td>
+                            <td><input ng-model="vs.pulse" id="pulse" type="text" disabled /> beats per minute</td>
                         </tr>
                         <tr>
                             <td>Blood Pressure:</td>
-                            <td><input id="bloodPressure" type="text" disabled> mm Hg</td>
+                            <td><input ng-model="vs.bloodPressure" id="bloodPressure" type="text" disabled> mm Hg</td>
                         </tr>
                         <tr>
                             <td>Glucose Level:</td>
-                            <td><input id="glucose" type="text" disabled>mg/dL</td>
+                            <td><input ng-model="vs.glucose" id="glucose" type="text" disabled>mg/dL</td>
                         </tr>
                     </table>
                     </div>
@@ -103,19 +108,19 @@
                     <table>
                         <tr>
                             <td>Respiratory Rate:</td>
-                            <td><input id="respRate" type="text" disabled> breaths/min</td>
+                            <td><input ng-model="vs.respRate" id="respRate" type="text" disabled> breaths/min</td>
                         </tr>
                         <tr>
                             <td>Weight:</td>
-                            <td><input id="weight" type="text" disabled> lbs</td>
+                            <td><input ng-model="vs.weight" id="weight" type="text" disabled> lbs</td>
                         </tr>
                         <tr>
                             <td>Height:</td>
-                            <td><input id="height" type="text" disabled> ft</td>
+                            <td><input ng-model="vs.height" id="height" type="text" disabled> ft</td>
                         </tr>
                         <tr>
                             <td>BMI:</td>
-                            <td><input id="bmi" type="text" disabled></td>
+                            <td><input ng-model="vs.bmi" id="bmi" type="text" disabled></td>
                         </tr>
                     </table>
                     </div>
@@ -127,10 +132,9 @@
             <form role="form">
 			  <div class="form-group">
 			    <label for="diagnosis">Diagnosis:</label>
-			    <textarea class="form-control" id="diagnosis"></textarea>
+			    <textarea class="form-control" ng-model="diagnosis" id="diagnosis"></textarea>
 			  </div>
-			  <input type="button" onclick="updateDiagnosis()" value="Update" class="btn btn-default"></input>
-			  <input type='hidden' id="encId" value='0'></input>
+			  <input type="button" ng-click="updateDiagnosis()" value="Update" class="btn btn-default"></input>
 			 </form>
             </div>
         </div>
@@ -140,8 +144,8 @@
                 	<div class="panel-heading">Symptoms/Conditions</div>
                     <div class="panel-body">
                     	<table id="symptoms" class="table-striped">
-                        	<tr>
-                            	<td></td>
+                        	<tr ng-repeat="s in symptoms">
+                            	<td>{{s}}</td>
                             </tr>
                         </table>
                     </div>
@@ -152,9 +156,9 @@
                 	<div class="panel-heading">Active Allergies</div>
                     <div class="panel-body">
                     	<table class="table-striped">
-                        	<tbody id="allergies">
-                        	
-                        	</tbody>
+                        	<tr ng-repeat="a in allergies">
+                            	<td>{{a}}</td>
+                            </tr>
                         </table>
                     </div>
                 </div>
@@ -164,8 +168,8 @@
                 	<div class="panel-heading">Active Medications</div>
                     <div class="panel-body">
                     	<table id="medications" class="table-striped">
-                        	<tr>
-                            	<td></td>
+                        	<tr ng-repeat="m in activeMeds">
+                            	<td>{{m}}</td>
                             </tr>
                         </table>
                     </div>
