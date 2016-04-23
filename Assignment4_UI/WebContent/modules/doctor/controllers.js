@@ -9,10 +9,10 @@ app.controller('DoctorController', [ '$scope', '$rootScope', function($scope, $r
 	$scope.personId = $rootScope.personId;
 } ]);
 
-app.controller('PatientProfileController', [ '$scope', '$routeParams', 'PateintDetailsService', 
-                                             function($scope, $routeParams, PateintDetailsService) {
+app.controller('PatientProfileController', [ '$scope', '$rootScope', '$routeParams', 'PateintDetailsService', 
+                                             function($scope, $rootScope, $routeParams, PateintDetailsService) {
 	$scope.patientId = $routeParams.patientId;
-	PateintDetailsService.Details($scope.patientId, $scope.personId, function(data) {
+	PateintDetailsService.Details($scope.patientId, $rootScope.personId, function(data) {
 		$scope.patient = data.patients[0];		
 	})
 	$scope.idSelected = null;
@@ -34,3 +34,12 @@ app.controller('PatientProfileController', [ '$scope', '$routeParams', 'PateintD
 		})
 	}
 }]);
+
+app.controller('LabResultsController', [ '$scope', '$rootScope', '$routeParams', 'LabResultsService', 
+                                         function($scope, $rootScope, $routeParams, LabResultsService) {
+	$scope.logout = "true";
+	$scope.patientId = $routeParams.patientId;
+	$scope.name = $rootScope.name;
+	$scope.patients = $rootScope.patients;
+	$scope.personId = $rootScope.personId;
+} ]);

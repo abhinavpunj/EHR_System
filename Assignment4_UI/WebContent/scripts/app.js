@@ -12,6 +12,7 @@ angular.module('Home', []);
 angular.module('Contact', []);
 angular.module('Doctor', []);
 angular.module('Nurse', []);
+angular.module('Lab', []);
 
 
 angular.module('BasicHttpAuthExample', [
@@ -20,6 +21,7 @@ angular.module('BasicHttpAuthExample', [
     'Contact',
     'Doctor',
     'Nurse',
+    'Lab',
     'ngRoute',
     'ngCookies'
 ])
@@ -56,9 +58,20 @@ angular.module('BasicHttpAuthExample', [
 				patientId : 'patientId'
 			})
 			
+			.when('/labTests/:patientId', {
+				templateUrl : 'modules/doctor/views/OrderLabTests.jsp',
+				controller : 'LabResultsController',
+				patientId : 'patientId'
+			})
+			
+			.when('/labtechnician', {
+				templateUrl : 'modules/lab/views/labHome.jsp',
+				controller : 'LabTechController'
+			})
+			
 			.when('/', {
-				templateUrl : 'modules/home/views/home.html',
-				controller : 'HomeController',
+				templateUrl : 'modules/authentication/views/login.jsp',
+				controller : 'LoginController'
 			})
  
         .otherwise({ redirectTo: '/login' });

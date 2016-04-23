@@ -3,7 +3,9 @@
 		<div class="col-lg-2">
 				<h4 id="drName">Dr. {{name}}</h4>
 				<ul class="nav nav-pills nav-stacked">
-					<li class="active"><a href="DoctorHome.jsp?personId=1">Home</a></li>
+					<li><a href="#/doctor">Home</a></li>
+					<li class="active"><a href="#/patientDetails/{{patientId}}">Patient Profile</a></li>
+					<li><a href="#/labTests/{{patientId}}">Lab Tests</a></li>
 				</ul>
 		</div>
 		<div class="col-lg-10">
@@ -129,13 +131,15 @@
                 </div>
             </div>
             <div class="col-lg-4">
-            <form role="form">
+            <div class="row">
+	            <form role="form">
 			  <div class="form-group">
 			    <label for="diagnosis">Diagnosis:</label>
 			    <textarea class="form-control" ng-model="diagnosis" id="diagnosis"></textarea>
 			  </div>
 			  <input type="button" ng-click="updateDiagnosis()" value="Update" class="btn btn-default"></input>
 			 </form>
+			 </div>
             </div>
         </div>
         <div class="row">
