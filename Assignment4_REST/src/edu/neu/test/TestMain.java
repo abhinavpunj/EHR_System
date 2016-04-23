@@ -3,6 +3,7 @@ package edu.neu.test;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import edu.neu.bean.LabPersonBean;
 import edu.neu.bean.PersonBean;
 import edu.neu.bean.RoleBean;
 import edu.neu.bean.UserAccountBean;
@@ -44,21 +45,24 @@ public class TestMain {
 		ua2.setPerson(nurse);
 		ua2.setRole(nurseRole);
 		
-		PersonBean lab = new PersonBean();
-		nurse.setName("lab");
+		LabPersonBean lab = new LabPersonBean();
+		lab.setName("lab");
 		
 		UserAccountBean ua3 = new UserAccountBean();
-		ua2.setUsername("lab");
-		ua2.setPassword("abc");
-		ua2.setPerson(lab);
-		ua2.setRole(labRole);
+		ua3.setUsername("lab");
+		ua3.setPassword("abc");
+		ua3.setPerson(lab);
+		ua3.setRole(labRole);
 		
 		session.save(docRole);
 		session.save(nurseRole);
+		session.save(labRole);
 		session.save(person);
 		session.save(nurse);
+		session.save(lab);
 		session.save(ua);
 		session.save(ua2);
+		session.save(ua3);
 		
 		t.commit();
 		session.close();

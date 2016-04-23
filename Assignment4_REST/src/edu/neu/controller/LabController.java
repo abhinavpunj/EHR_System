@@ -18,11 +18,7 @@ import edu.neu.dao.DoctorDAO;
 @ValidateRequest
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-@Path("/patient")
-public class PatientController {
-
-	
-
-	
+@Path("/lab")
+public class LabController {
 	
 }

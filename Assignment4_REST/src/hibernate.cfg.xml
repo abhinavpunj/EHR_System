@@ -21,6 +21,9 @@
         <mapping class="edu.neu.bean.EncounterBean" />
         <mapping class="edu.neu.bean.PatientBean" />
         <mapping class="edu.neu.bean.VitalSignBean" />
+        <mapping class="edu.neu.bean.LabPersonBean" />
+        <mapping class="edu.neu.bean.LabRequestBean" />
+        <mapping class="edu.neu.bean.WorkRequestBean" />
         
     </session-factory>
     
