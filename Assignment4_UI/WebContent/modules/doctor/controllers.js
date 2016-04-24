@@ -35,11 +35,33 @@ app.controller('PatientProfileController', [ '$scope', '$rootScope', '$routePara
 	}
 }]);
 
-app.controller('LabResultsController', [ '$scope', '$rootScope', '$routeParams', 'LabResultsService', 
-                                         function($scope, $rootScope, $routeParams, LabResultsService) {
+app.controller('LabResultsController', [ '$scope', '$filter', '$rootScope', '$routeParams', 'LabResultsService', 
+                                         function($scope, $filter, $rootScope, $routeParams, LabResultsService) {
 	$scope.logout = "true";
 	$scope.patientId = $routeParams.patientId;
 	$scope.name = $rootScope.name;
 	$scope.patients = $rootScope.patients;
 	$scope.personId = $rootScope.personId;
+	
+	$scope.getEncounters = function() {
+		LabResultsService.GetEncounters($scope.patientId, function(data) {
+			$scope.encs = data;
+		})
+	}
+	
+	
+	$scope.orderTest = function () {
+		LabResultsService.OrderTest($scope.personId, $scope.selEncounter, $scope.testName, function(data) {
+			$scope.orders.push(data);
+		})
+	}
+	
+	$scope.getOrders = function () {
+		LabResultsService.GetOrders($scope.patientId, function(data) {
+			$scope.orders = [];
+			$scope.orders = data;
+		})
+		
+	}
+	
 } ]);

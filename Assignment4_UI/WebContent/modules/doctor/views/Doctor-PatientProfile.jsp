@@ -67,6 +67,7 @@
                             <th>Chief Complaint</th>
                             <th>Diagnosis</th>
                             <th>Doctor</th>
+                            <th>Status</th>
                             <!-- <th>Date</th> -->
                         </thead>
                         <tbody id="encList">
@@ -75,6 +76,7 @@
                         		<td>{{encs.chiefComplaint}}</td>
                         		<td>{{encs.diagnosis}}</td>
                         		<td>{{encs.doctor}}</td>
+                        		<td>{{encs.status}}</td>
                         	</tr>
                         </tbody>
                     </table>
@@ -132,7 +134,7 @@
             </div>
             <div class="col-lg-4">
             <div class="row">
-	            <form role="form">
+	            <form role="form" ng-if="encounter.status == 'Open'">
 			  <div class="form-group">
 			    <label for="diagnosis">Diagnosis:</label>
 			    <textarea class="form-control" ng-model="diagnosis" id="diagnosis"></textarea>

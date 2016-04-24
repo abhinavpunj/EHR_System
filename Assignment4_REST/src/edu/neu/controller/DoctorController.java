@@ -35,11 +35,12 @@ public class DoctorController {
 	@Autowired
 	DoctorDAO doctorDao;
 	
-	@POST
+	@GET
 	@RolesAllowed("doctor")
-	public PersonBean getDoctorHome(@Valid PersonBean doctor)
+	@Path("/{personId}")
+	public PersonBean getDoctorHome(@PathParam(value = "personId") int personId)
 	{
-		doctor = doctorDao.getDoctorDetails(doctor);
+		PersonBean doctor = doctorDao.getDoctorDetails(personId);
 		return doctor;
 	}
 	

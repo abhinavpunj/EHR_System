@@ -23,11 +23,12 @@ public class DoctorDAO extends DAO {
 		try 
 		{
 			conn = getConnection();
-			String sql = "UPDATE encounter SET doctor_name = ?, diagnosis = ? WHERE encounter_id = ?";
+			String sql = "UPDATE encounter SET doctor_name = ?, diagnosis = ?, status = ? WHERE encounter_id = ?";
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, encounter.getDoctor());
 			stmt.setString(2, encounter.getDiagnosis());
 			stmt.setInt(3, encounter.getEncounterId());
+			stmt.setString(4, "Closed");
 			
 			stmt.executeUpdate();
 		} 
@@ -151,7 +152,7 @@ public class DoctorDAO extends DAO {
 			}
 			
 			String sql2 = "select a.patient_Id, a.name, a.age, a.phone, a.gender, "
-					+ "b.encounter_id, b.chiefComplaint, b.doctor_name, b.diagnosis"
+					+ "b.encounter_id, b.chiefComplaint, b.doctor_name, b.diagnosis, b.status"
 					+ " from patientprofile a inner join encounter b on a.patient_id = b.pateint_id where a.patient_id = ?";
 			stmt2 = conn.prepareStatement(sql2);
 			for(PatientBean p : doc.getPatients())
@@ -175,6 +176,7 @@ public class DoctorDAO extends DAO {
 						enc.setChiefComplaint(rs.getString("chiefComplaint"));
 						enc.setDoctor(rs.getString("doctor_name"));
 						enc.setDiagnosis(rs.getString("diagnosis"));
+						enc.setStatus(rs.getString("status"));
 						p.getEncounterHistory().add(enc);
 					}
 				}

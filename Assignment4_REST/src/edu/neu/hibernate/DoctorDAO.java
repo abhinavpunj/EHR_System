@@ -15,14 +15,14 @@ import edu.neu.bean.UserAccountBean;
 @Component
 public class DoctorDAO extends DAO {
 
-	public PersonBean getDoctorDetails(PersonBean doc)
+	public PersonBean getDoctorDetails(int personId)
 	{
 		Query q = getSession().createQuery("from PersonBean where personId = :personId1");
-		q.setInteger("personId1", doc.getPersonId());
-        doc = (PersonBean) q.uniqueResult();
+		q.setInteger("personId1", personId);
+        PersonBean doc = (PersonBean) q.uniqueResult();
 		
-        Query q2 = getSession().createQuery("from PatientBean");
-        doc.setPatients((ArrayList<PatientBean>) q2.list());
+/*        Query q2 = getSession().createQuery("from PatientBean");
+        doc.setPatients((ArrayList<PatientBean>) q2.list());*/
 		return doc;
 	}
 	

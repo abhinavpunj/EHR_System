@@ -93,7 +93,7 @@ public class PatientDAO extends DAO {
 		PreparedStatement pstmt3 = null;
 		PreparedStatement pstmt4 = null;
 		PreparedStatement pstmt5 = null;
-		String query = "insert into encounter(pateint_id, chiefcomplaint, vitalsign_id) values (?,?,?)";
+		String query = "insert into encounter(pateint_id, chiefcomplaint, vitalsign_id, status) values (?,?,?,?)";
 		String query2 = "insert into vitalSign(respiratoryrate, pulse, weight, bloodpreesure, height, glucose, bmi) values (?,?,?,?,?,?,?)";
 		String query3 = "insert into allergies(name, encounter_id) values (?,?)";
 		String query4 = "insert into medication(name, encounter_id) values (?,?)";
@@ -123,6 +123,7 @@ public class PatientDAO extends DAO {
 			//pstmt.setString(2, encounter.getDoctor());
 			pstmt.setString(2, encounter.getChiefComplaint());
 			pstmt.setInt(3, vitalSignId);
+			pstmt.setString(4, "Open");
 			pstmt.executeUpdate();
 			int encounterId;
 			rs = pstmt.getGeneratedKeys();

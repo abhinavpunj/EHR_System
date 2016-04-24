@@ -1,7 +1,7 @@
 package edu.neu.bean;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -42,10 +42,14 @@ public class EncounterBean {
 	@Column(name = "doctor")
 	private String doctor;
 	
-	//private Date date;
+/*	@Column(name = "dateUpdated")
+	private Date dateUpdated = new Date();*/
 	
 	@Column(name = "diagnosis")
 	private String diagnosis;
+	
+	@Column(name = "status")
+	private String status;
 	
 	@ElementCollection
 	@CollectionTable(name = "allergies")
@@ -115,5 +119,10 @@ public class EncounterBean {
 		this.activeMeds = activeMeds;
 	}
 	
-	
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 }

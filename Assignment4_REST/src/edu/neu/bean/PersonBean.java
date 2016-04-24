@@ -36,6 +36,7 @@ public class PersonBean {
 	/*@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "PersonId")
 	private UserAccountBean userAccount;*/
+	@Transient
 	private String role;
 	
 	/*@OneToMany(fetch = FetchType.EAGER, mappedBy = "Person")
