@@ -17,6 +17,7 @@ angular.module('Authentication')
                     $rootScope.name = data.name;
                     $rootScope.patients = data.patients;
                     $rootScope.personId = data.personId;
+                    $rootScope.person = data;
                 } else {
                     $scope.error = response.message;
                     $scope.dataLoading = false;

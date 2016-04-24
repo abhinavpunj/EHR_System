@@ -27,7 +27,7 @@
                         		<td>{{o.testName}}</td>
                         		<td>{{o.status}}</td>
                         		<td>{{o.result}}</td>
-                        		<td>{{o.assignedTo}}</td>
+                        		<td>{{o.assignedTo.name}}</td>
                         	</tr>
                         </tbody>
                     </table>

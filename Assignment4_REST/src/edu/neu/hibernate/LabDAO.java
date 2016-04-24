@@ -48,6 +48,17 @@ public class LabDAO extends DAO {
 		return labOrder;
 	}
 	
+	public void updateOrder(LabRequestBean order)
+	{
+		Session session = getSession();
+		Transaction t = session.beginTransaction();
+		
+		session.update(order);
+		
+		t.commit();
+		session.close();
+	}
+	
 	public ArrayList<LabRequestBean> getOrders(int patientId){
 		ArrayList<EncounterBean> encId = getEncounterIDs(patientId);
 		List<Integer> Ids = new ArrayList<Integer>();
@@ -59,6 +70,7 @@ public class LabDAO extends DAO {
 		
 		return (ArrayList<LabRequestBean>) q.list();
 	}
+	
 	public ArrayList<LabRequestBean> getOrders(){
 
 		Query q = getSession().createQuery("FROM LabRequestBean");
