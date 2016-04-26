@@ -6,6 +6,7 @@
 					<li><a href="#/doctor">Home</a></li>
 					<li class="active"><a href="#/patientDetails/{{patientId}}">Patient Profile</a></li>
 					<li><a href="#/labTests/{{patientId}}">Lab Tests</a></li>
+					<li><a href="#/prescription/{{patientId}}">Add Prescription</a></li>
 				</ul>
 		</div>
 		<div class="col-lg-10">

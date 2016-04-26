@@ -64,6 +64,12 @@ angular.module('BasicHttpAuthExample', [
 				patientId : 'patientId'
 			})
 			
+			.when('/prescription/:patientId', {
+				templateUrl : 'modules/doctor/views/AddPrescription.jsp',
+				controller : 'PrescriptionController',
+				patientId : 'patientId'
+			})
+			
 			.when('/labtechnician', {
 				templateUrl : 'modules/lab/views/labHome.jsp',
 				controller : 'LabTechController'

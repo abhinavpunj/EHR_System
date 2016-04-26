@@ -1,8 +1,11 @@
 package edu.neu.test;
 
+import java.util.ArrayList;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import edu.neu.bean.DrugBean;
 import edu.neu.bean.LabPersonBean;
 import edu.neu.bean.PersonBean;
 import edu.neu.bean.RoleBean;
@@ -54,6 +57,23 @@ public class TestMain {
 		ua3.setPerson(lab);
 		ua3.setRole(labRole);
 		
+		DrugBean d1 = new DrugBean();
+		d1.setDrugName("drug1");
+		d1.setComponents(new ArrayList<String>());
+		d1.getComponents().add("sulphur");
+		d1.getComponents().add("paracetamol");
+		
+		DrugBean d2 = new DrugBean();
+		d2.setDrugName("drug2");
+		d2.setComponents(new ArrayList<String>());
+		d2.getComponents().add("ibuprofen");
+		
+		DrugBean d3 = new DrugBean();
+		d3.setDrugName("drug3");
+		d3.setComponents(new ArrayList<String>());
+		d3.getComponents().add("sulphur");
+		d3.getComponents().add("morphine");
+		
 		session.save(docRole);
 		session.save(nurseRole);
 		session.save(labRole);
@@ -63,6 +83,10 @@ public class TestMain {
 		session.save(ua);
 		session.save(ua2);
 		session.save(ua3);
+		
+		session.save(d1);
+		session.save(d2);
+		session.save(d3);
 		
 		t.commit();
 		session.close();

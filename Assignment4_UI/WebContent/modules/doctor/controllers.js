@@ -65,3 +65,44 @@ app.controller('LabResultsController', [ '$scope', '$filter', '$rootScope', '$ro
 	}
 	
 } ]);
+
+app.controller('PrescriptionController', [ '$scope', '$rootScope', '$routeParams', 'PrescriptionService',
+                                           function($scope, $rootScope, $routeParams, PrescriptionService) {
+	
+	$scope.logout = "true";
+	$scope.patientId = $routeParams.patientId;
+	$scope.name = $rootScope.name;
+	$scope.patients = $rootScope.patients;
+	$scope.personId = $rootScope.personId;
+	
+	$scope.getEncounters = function() {
+		PrescriptionService.GetEncounters($scope.patientId, function(data) {
+			$scope.encs = data;
+		})
+	}
+	
+	$scope.getDrugs = function() {
+		PrescriptionService.GetDrugs(function(data) {
+			$scope.allDrugs = data;
+		})
+	}
+	
+	$scope.getPrescriptions = function() {
+		PrescriptionService.GetPrescriptions($scope.patientId, function(data) {
+			$scope.drugs = data;
+		})
+	}	
+	
+	$scope.addPrescription = function(encounter) {
+		encounter.doctor = $scope.name;
+		PrescriptionService.CheckAllergy(encounter, function(data) {
+			$scope.drugAllergy = data;
+		})
+		if($scope.drugAllergy.length > 0){
+			PrescriptionService.AddPrescription(encounter, function(data) {
+				$scope.drugs = data;
+			})
+		}
+	}
+	
+} ]);

@@ -20,10 +20,12 @@ import org.jboss.resteasy.spi.validation.ValidateRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import edu.neu.bean.DrugBean;
 import edu.neu.bean.EncounterBean;
 import edu.neu.bean.PatientBean;
 import edu.neu.bean.PersonBean;
 import edu.neu.hibernate.DoctorDAO;
+import edu.neu.hibernate.LabDAO;
 
 @Controller
 @Path("/doctor")
@@ -76,4 +78,37 @@ public class DoctorController {
 	{
 		doctorDao.updateDiagnosis(encounter);
 	}
+	
+	@GET
+	@RolesAllowed("doctor")
+	@Path("/getPrescriptions/{patientId}")
+	public ArrayList<EncounterBean> getPrescriptions(@PathParam(value = "patientId") int patientId){
+		ArrayList<EncounterBean> drugs = doctorDao.getAllEncounters(patientId);
+		return drugs;
+	}
+	
+	@GET
+	@RolesAllowed("doctor")
+	@Path("/getDrugs")
+	public ArrayList<DrugBean> getDrugs(){
+		ArrayList<DrugBean> drugs = doctorDao.getAllDrugs();
+		return drugs;
+	}
+	
+	@POST
+	@RolesAllowed("doctor")
+	@Path("/checkAllergy")
+	public ArrayList<DrugBean> checkDrugAllergy(EncounterBean encounter){
+		
+		return doctorDao.checkDrugAllergy(encounter);
+	}
+	
+	@POST
+	@RolesAllowed("doctor")
+	@Path("/addPrescription")
+	public ArrayList<EncounterBean> addPrescription(EncounterBean encounter){
+		
+		return doctorDao.addPrescription(encounter);
+	}
+	
 }

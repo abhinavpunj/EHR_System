@@ -36,6 +36,7 @@ app.factory('SearchPatientService',
 	        	encounter.activeMeds = encounter.activeMeds.split(",");
 	        	encounter.allergies = encounter.allergies.split(",");
 	        	encounter.symptoms = encounter.symptoms.split(",");
+	        	encounter.status = "Open";
 	        	$http.post('http://localhost:8080/Assignment4_REST/rest/nurse/addEncounter', encounter)
                 .success(function (data, status) {
                     callback(data);

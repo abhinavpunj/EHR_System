@@ -24,6 +24,7 @@
         <mapping class="edu.neu.bean.LabPersonBean" />
         <mapping class="edu.neu.bean.LabRequestBean" />
         <mapping class="edu.neu.bean.WorkRequestBean" />
+        <mapping class="edu.neu.bean.DrugBean" />
         
     </session-factory>
     

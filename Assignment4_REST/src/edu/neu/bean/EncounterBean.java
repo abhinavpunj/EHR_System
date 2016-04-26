@@ -1,8 +1,9 @@
 package edu.neu.bean;
 
 import java.util.ArrayList;
-import java.sql.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
@@ -14,11 +15,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import org.springframework.stereotype.Component;
 
 @Entity
 @Table(name = "Encounter")
@@ -63,9 +64,23 @@ public class EncounterBean {
 	@CollectionTable(name = "activeMeds")
 	private List<String> activeMeds;
 	
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinTable(name = "encounter_drug", joinColumns = { 
+			@JoinColumn(name = "encounterId", nullable = false, updatable = false) }, 
+			inverseJoinColumns = { @JoinColumn(name = "drugId", 
+					nullable = false, updatable = false) })
+	private Set<DrugBean> prescription;
+	
+	public Set<DrugBean> getPrescription() {
+		return this.prescription;
+	}
+	public void setPrescription(Set<DrugBean> prescription) {
+		this.prescription = prescription;
+	}
 	public int getEncounterId() {
 		return encounterId;
 	}
+
 	public void setEncounterId(int encounterId) {
 		this.encounterId = encounterId;
 	}
