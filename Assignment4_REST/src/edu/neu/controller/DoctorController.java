@@ -20,6 +20,7 @@ import org.jboss.resteasy.spi.validation.ValidateRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import edu.neu.bean.DiagnosisBean;
 import edu.neu.bean.DrugBean;
 import edu.neu.bean.EncounterBean;
 import edu.neu.bean.PatientBean;
@@ -93,6 +94,14 @@ public class DoctorController {
 	public ArrayList<DrugBean> getDrugs(){
 		ArrayList<DrugBean> drugs = doctorDao.getAllDrugs();
 		return drugs;
+	}
+	
+	@GET
+	@RolesAllowed("doctor")
+	@Path("/getDiagnosis")
+	public ArrayList<DiagnosisBean> getDiagnosis(){
+		ArrayList<DiagnosisBean> diagnosis = doctorDao.getAllDiagnosis();
+		return diagnosis;
 	}
 	
 	@POST

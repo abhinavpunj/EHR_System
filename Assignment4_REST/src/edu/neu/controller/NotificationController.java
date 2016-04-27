@@ -12,6 +12,7 @@ import javax.ws.rs.core.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import edu.neu.bean.DiagnosisBean;
 import edu.neu.bean.EncounterBean;
 import edu.neu.bean.PatientBean;
 import edu.neu.hibernate.EmailNotification;
@@ -49,5 +50,22 @@ public class NotificationController {
 		patient.getEncounterHistory().add(encounter);
 		patient.setEmail(encounter.getPatientId().getEmail());
 		return notification.notifyByMail(patient);
+	}
+	
+	@POST
+	@RolesAllowed("nurse")
+	@Path("/transfer")
+	public boolean transferPatient(PatientBean patient)
+	{
+		patient.setEncounterHistory(patientDao.getOpenEncounters(patient));
+		return notification.transferPatient(patient);
+	}
+	
+	@POST
+	@RolesAllowed("doctor")
+	@Path("/sendResources")
+	public boolean sendResources(DiagnosisBean diagnosis)
+	{
+		return notification.sendEduResources(diagnosis);
 	}
 }

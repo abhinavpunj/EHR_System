@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Component;
 
+import edu.neu.bean.DiagnosisBean;
 import edu.neu.bean.DrugBean;
 import edu.neu.bean.EncounterBean;
 import edu.neu.bean.PatientBean;
@@ -90,6 +91,13 @@ public class DoctorDAO extends DAO {
 		Query q = getSession().createQuery("from DrugBean");
 		
 		return (ArrayList<DrugBean>) q.list();
+	}
+	
+	public ArrayList<DiagnosisBean> getAllDiagnosis()
+	{
+		Query q = getSession().createQuery("from DiagnosisBean");
+		
+		return (ArrayList<DiagnosisBean>) q.list();
 	}
 	
 	public ArrayList<DrugBean> checkDrugAllergy(EncounterBean encounter)

@@ -1,5 +1,7 @@
 package edu.neu.hibernate;
 
+import java.util.ArrayList;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -85,5 +87,15 @@ public class PatientDAO extends DAO {
 				e1.printStackTrace();
 			}
         }
+	}
+	
+	public ArrayList<EncounterBean> getOpenEncounters(PatientBean patient)
+	{
+		Query q = getSession().createQuery("from EncounterBean where patientId = :patientId1 AND status = :stat");
+
+        q.setInteger("patientId1", patient.getPatientId());
+        q.setString("stat", "Open");
+        
+        return (ArrayList<EncounterBean>) q.list();
 	}
 }

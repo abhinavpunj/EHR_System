@@ -45,6 +45,9 @@ public class PatientBean {
 	private int phone;
 	
 	@Transient
+	private String transferEmail;
+	
+	@Transient
 	private ArrayList<EncounterBean> encounterHistory = new ArrayList<EncounterBean>();
 	
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "patient")
@@ -102,6 +105,12 @@ public class PatientBean {
 	}
 	public void setSmoking(String smoking) {
 		this.smoking = smoking;
+	}
+	public String getTransferEmail() {
+		return transferEmail;
+	}
+	public void setTransferEmail(String transferEmail) {
+		this.transferEmail = transferEmail;
 	}
 
 }

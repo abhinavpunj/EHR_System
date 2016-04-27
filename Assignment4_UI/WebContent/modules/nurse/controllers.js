@@ -39,6 +39,7 @@ app.controller('EncounterController', [ '$scope', '$rootScope', '$timeout', 'Sea
                                     function($scope, $rootScope, $timeout, SearchPatientService) {
 $scope.name = $rootScope.name;
 $scope.success = false;
+$scope.successTran = false;
 $scope.getPatient = function() {
 	
 	SearchPatientService.GetPatient($scope.encounter.patientId.patientId, function(data) {
@@ -56,6 +57,17 @@ $scope.sendEmail = function() {
 		$scope.success = data;
 		$timeout(function () {
 		      $scope.success = false;
+		  }, 3000);
+	})
+}
+
+$scope.transferPatient = function() {
+	$scope.transferLoading = true;
+	SearchPatientService.TransferPatient($scope.patient, function (data) {
+		$scope.transferLoading = false;
+		$scope.successTran = data;
+		$timeout(function () {
+		      $scope.successTran = false;
 		  }, 3000);
 	})
 }

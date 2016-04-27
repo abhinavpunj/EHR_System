@@ -16,6 +16,20 @@ app.factory('PateintDetailsService',
             	
         };
         
+        service.GetDiagnosis = function (callback) {
+        	$http.get('http://localhost:8080/Assignment4_REST/rest/doctor/getDiagnosis')
+            .success(function (data, status) {
+                callback(data);
+            });
+		}
+        
+        service.SendResources = function (diagnosis, callback) {
+        	$http.post('http://localhost:8080/Assignment4_REST/rest/notify/sendResources', diagnosis)
+            .success(function (data, status) {
+                callback(data);
+            });
+		}
+        
         service.SendEmail = function (encounter, callback) {
         	$http.post('http://localhost:8080/Assignment4_REST/rest/notify/sendEncounter', encounter)
             .success(function (data, status) {

@@ -27,6 +27,12 @@ app.controller('PatientProfileController', [ '$scope', '$rootScope', '$routePara
 		$scope.allergies = encs.allergies;
 	}
 	
+	$scope.getDiagnosis = function () {
+		PateintDetailsService.GetDiagnosis(function (data) {
+			$scope.allDiag = data;
+		})
+	}
+	
 	$scope.sendEmail = function() {
 		$scope.dataLoading = true;
 		$scope.success = false;
@@ -38,12 +44,16 @@ app.controller('PatientProfileController', [ '$scope', '$rootScope', '$routePara
 			  }, 3000);
 		})
 	}
-	$scope.updateDiagnosis = function () {
+	$scope.updateDiagnosis = function (diagObj) {
 		
+		$scope.encounter.diagnosis = diagObj.diagnosisName;
 		$scope.encounter.doctor = $scope.name;
 		$scope.encounter.status = "Closed";
 		PateintDetailsService.UpdateDiagnosis($scope.encounter, function(data) {
-
+			diagObj.patient = $scope.encounter.patientId;
+			PateintDetailsService.SendResources(diagObj, function(data) {
+				
+			})
 		})
 	}
 }]);

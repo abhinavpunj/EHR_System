@@ -138,9 +138,9 @@
 	         <form role="form" >
 			  <div class="form-group">
 			    <label for="diagnosis">Diagnosis:</label>
-			    <textarea class="form-control" ng-model="encounter.diagnosis" id="diagnosis"></textarea>
+			    <select ng-init="getDiagnosis()" ng-options="d.diagnosisName for d in allDiag" class="form-control" ng-model="diagObj" id="diagnosis"></select>
 			  </div>
-			  <input type="button" ng-click="updateDiagnosis()" value="Update" class="btn btn-default"></input>
+			  <input type="button" ng-click="updateDiagnosis(diagObj)" value="Update" class="btn btn-default"></input>
 			 </form>
 			 </div>
 			 <br/>

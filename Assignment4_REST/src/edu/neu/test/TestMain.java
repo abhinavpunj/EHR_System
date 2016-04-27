@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import edu.neu.bean.DiagnosisBean;
 import edu.neu.bean.DrugBean;
 import edu.neu.bean.LabPersonBean;
 import edu.neu.bean.PersonBean;
@@ -73,6 +74,27 @@ public class TestMain {
 		d3.setComponents(new ArrayList<String>());
 		d3.getComponents().add("sulphur");
 		d3.getComponents().add("morphine");
+		
+		DiagnosisBean db1 = new DiagnosisBean();
+		db1.setDiagnosisName("Cancer");
+		db1.setEduLink("http://www.cancer.gov/");
+		
+		DiagnosisBean db2 = new DiagnosisBean();
+		db2.setDiagnosisName("High Cholestrol");
+		db2.setEduLink("http://www.nhlbi.nih.gov/health/resources/heart/heart-cholesterol-hbc-what-html");
+		
+		DiagnosisBean db3 = new DiagnosisBean();
+		db3.setDiagnosisName("Influenza");
+		db3.setEduLink("http://www.cdc.gov/flu/");
+		
+		DiagnosisBean db4 = new DiagnosisBean();
+		db4.setDiagnosisName("Migraine");
+		db4.setEduLink("http://www.webmd.com/migraines-headaches/");
+		
+		session.save(db1);
+		session.save(db2);
+		session.save(db3);
+		session.save(db4);
 		
 		session.save(docRole);
 		session.save(nurseRole);
