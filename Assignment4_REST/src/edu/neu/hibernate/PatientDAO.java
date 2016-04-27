@@ -53,6 +53,16 @@ public class PatientDAO extends DAO {
         return patient;
 	}
 	
+	public EncounterBean getLatestEncounter(PatientBean patient)
+	{
+		Query q = getSession().createQuery("from EncounterBean where patientId = :patientId1 order by encounterId desc");
+
+        q.setInteger("patientId1", patient.getPatientId());
+        EncounterBean latest = (EncounterBean) q.list().get(0);
+        
+        return latest;
+	}
+	
 	public void addEncounterData(EncounterBean encounter) 
 	{
 		try 

@@ -16,6 +16,13 @@ app.factory('PateintDetailsService',
             	
         };
         
+        service.SendEmail = function (encounter, callback) {
+        	$http.post('http://localhost:8080/Assignment4_REST/rest/notify/sendEncounter', encounter)
+            .success(function (data, status) {
+                callback(data);
+            });
+		}
+        
         service.UpdateDiagnosis = function (encounter, callback) {
 			$http.put('http://localhost:8080/Assignment4_REST/rest/doctor/updateDiagnosis', encounter)
 				.success(function (data, status) {

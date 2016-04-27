@@ -1,7 +1,7 @@
-
+<div ng-include="'logout.jsp'"></div>
 	<div class="row">
 		<div class="col-lg-2">
-				<h4 id="drName">Hi {{name}} </h4>
+				<h4 id="drName">{{name}} </h4>
 				<ul class="nav nav-pills nav-stacked">
 					<li class="active"><a href="#/labTech">Home</a></li>
 				</ul>

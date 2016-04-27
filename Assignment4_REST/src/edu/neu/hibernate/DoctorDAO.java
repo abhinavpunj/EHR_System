@@ -70,7 +70,7 @@ public class DoctorDAO extends DAO {
 		
 		temp.setDoctor(encounter.getDoctor());
 		temp.setDiagnosis(encounter.getDiagnosis());
-		
+		temp.setStatus(encounter.getStatus());
 		session.merge(temp);
 		t.commit();
 		session.close();

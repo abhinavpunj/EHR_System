@@ -35,6 +35,12 @@ public class PatientBean {
 	@Column(name = "address")
 	private String address;
 	
+	@Column(name = "email")
+	private String email;
+	
+	@Column(name = "smoking")
+	private String smoking;
+	
 	@Column(name = "phone")
 	private int phone;
 	
@@ -84,6 +90,18 @@ public class PatientBean {
 	}
 	public void setPhone(int phone) {
 		this.phone = phone;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getSmoking() {
+		return smoking;
+	}
+	public void setSmoking(String smoking) {
+		this.smoking = smoking;
 	}
 
 }

@@ -32,6 +32,13 @@ app.factory('SearchPatientService',
 	            	
 	        };
 	        
+	        service.SendEmail = function (patient, callback) {
+	        	$http.post('http://localhost:8080/Assignment4_REST/rest/notify/send', patient)
+                .success(function (data, status) {
+                    callback(data);
+                });
+			}
+	        
 	        service.AddEncounter = function(encounter, callback) {
 	        	encounter.activeMeds = encounter.activeMeds.split(",");
 	        	encounter.allergies = encounter.allergies.split(",");

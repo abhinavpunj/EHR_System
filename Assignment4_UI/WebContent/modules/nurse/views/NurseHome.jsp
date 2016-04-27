@@ -1,9 +1,10 @@
-<div class="container">
+<div ng-include="'logout.jsp'"></div>
+
 	<div class="row">
 		<div class="col-lg-2">
-			<h4>Hi {{name}} </h4>
+			<h4>{{name}} </h4>
 				<ul class="nav nav-pills nav-stacked">
-					<li class="active"><a href="NurseHome.jsp">Register Patient</a></li>
+					<li class="active"><a href="#/nurse">Register Patient</a></li>
 					<li><a ng-href="#/searchPatient">Search Patient</a></li>
 				</ul>
 		</div>
@@ -24,12 +25,30 @@
 			      </div>
 			    </div>
 			    <div class="form-group">
-			      <label class="control-label col-sm-2" for="gender">Gender:</label>
+			    <label class="control-label col-sm-2" for="gender">Gender:</label>
+			      <div class="col-sm-4">          
+			        <select class="form-control" ng-model="patient.gender" id="gender">
+			        	<option>Male</option>
+			        	<option>Female</option>
+			        </select>
+			      </div>
+			    <div ng-if="patient.age > 13">
+			      <label class="control-label col-sm-2" for="smoking">Smoking:</label>
+			      <div class="col-sm-4">          
+			        <select class="form-control" ng-model="patient.smoking" id="smoking">
+			        	<option>Yes</option>
+			        	<option>No</option>
+			        </select>
+			      </div>
+			      </div>
+			      
+			    </div>
+			    <div class="form-group">
+			      <label class="control-label col-sm-2" for="email">Email ID:</label>
 			      <div class="col-sm-10">          
-			        <input type="text" class="form-control" ng-model="patient.gender" id="gender" placeholder="Male/Female">
+			        <input type="email" class="form-control" id="email" ng-model="patient.email" placeholder="Enter Email ID">
 			      </div>
 			    </div>
-			    
 			    <div class="form-group">
 			      <label class="control-label col-sm-2" for="dob">Address:</label>
 			      <div class="col-sm-10">          
@@ -52,4 +71,3 @@
 			</form>
 		</div>
 	</div>
-</div>

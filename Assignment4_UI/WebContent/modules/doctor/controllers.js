@@ -9,15 +9,17 @@ app.controller('DoctorController', [ '$scope', '$rootScope', function($scope, $r
 	$scope.personId = $rootScope.personId;
 } ]);
 
-app.controller('PatientProfileController', [ '$scope', '$rootScope', '$routeParams', 'PateintDetailsService', 
-                                             function($scope, $rootScope, $routeParams, PateintDetailsService) {
+app.controller('PatientProfileController', [ '$scope', '$rootScope', '$routeParams', '$timeout', 'PateintDetailsService', 
+                                             function($scope, $rootScope, $routeParams, $timeout, PateintDetailsService) {
 	$scope.patientId = $routeParams.patientId;
+	$scope.notify = true;
 	PateintDetailsService.Details($scope.patientId, $rootScope.personId, function(data) {
 		$scope.patient = data.patients[0];		
 	})
 	$scope.idSelected = null;
 	$scope.getVitalSign = function (encs) {
 		$scope.idSelected = encs.encounterId;
+		$scope.notify = false;
 		$scope.encounter = encs;
 		$scope.vs = encs.vitalSign;
 		$scope.symptoms = encs.symptoms;
@@ -25,12 +27,23 @@ app.controller('PatientProfileController', [ '$scope', '$rootScope', '$routePara
 		$scope.allergies = encs.allergies;
 	}
 	
+	$scope.sendEmail = function() {
+		$scope.dataLoading = true;
+		$scope.success = false;
+		PateintDetailsService.SendEmail($scope.encounter, function (data) {
+			$scope.dataLoading = false;
+			$scope.success = data;
+			$timeout(function () {
+			      $scope.success = false;
+			  }, 3000);
+		})
+	}
 	$scope.updateDiagnosis = function () {
 		
 		$scope.encounter.doctor = $scope.name;
-		$scope.encounter.diagnosis = $scope.diagnosis;
+		$scope.encounter.status = "Closed";
 		PateintDetailsService.UpdateDiagnosis($scope.encounter, function(data) {
-			$scope.diagnosis = null;
+
 		})
 	}
 }]);
