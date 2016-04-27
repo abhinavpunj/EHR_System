@@ -14,26 +14,21 @@ app.controller('NurseController', [ '$scope', '$rootScope', 'NurseService',
 	}	
 }]);
 
-app.directive('myAlert', function($timeout){
-	  return {
-	    scope: {
-	      isVisible: '='
-	    },
-	    link: link,
-	    restrict: 'E',
-	    replace: true,
-	    template: '<div ng-if="isVisible" class="alert alert-success"><strong>Success!</strong> Notification Sent.</div>'
-	  }
-	  
-	  function link(scope, element, attrs){
-	    scope.isVisible = true;
-	    
-	    $timeout(function (){
-	            scope.isVisible = false;
-	            }, 5000);
-	    
-	  }
-	});
+app.controller('ListPatientsController', [ '$scope', '$rootScope', 'ListPatientsService', 
+                                    function($scope, $rootScope, ListPatientsService) {
+$scope.name = $rootScope.name;
+
+$scope.getDiagnosis = function () {
+	ListPatientsService.GetDiagnosis(function (data) {
+		$scope.allDiag = data;
+	})
+}
+$scope.generateList = function (diag) {
+	ListPatientsService.GenerateList(diag, function (data) {
+		$scope.list = data;
+	})
+}
+}]);
 
 app.controller('EncounterController', [ '$scope', '$rootScope', '$timeout', 'SearchPatientService', 
                                     function($scope, $rootScope, $timeout, SearchPatientService) {

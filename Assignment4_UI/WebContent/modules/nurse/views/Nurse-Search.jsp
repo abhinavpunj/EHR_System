@@ -6,6 +6,7 @@
 				<ul class="nav nav-pills nav-stacked">
 					<li><a href="#/nurse">Register Patient</a></li>
 					<li class="active"><a href="#/searchPatient">Search Patient</a></li>
+					<li><a href="#/listPatients">Condition Specific Patients</a></li>
 				</ul>
 		</div>
 		<div class="col-lg-10">

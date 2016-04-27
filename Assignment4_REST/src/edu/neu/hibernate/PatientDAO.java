@@ -1,6 +1,7 @@
 package edu.neu.hibernate;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -12,6 +13,7 @@ import org.hibernate.Transaction;
 
 import org.springframework.stereotype.Component;
 
+import edu.neu.bean.DiagnosisBean;
 import edu.neu.bean.EncounterBean;
 import edu.neu.bean.PatientBean;
 import edu.neu.bean.UserAccountBean;
@@ -97,5 +99,27 @@ public class PatientDAO extends DAO {
         q.setString("stat", "Open");
         
         return (ArrayList<EncounterBean>) q.list();
+	}
+	
+	public ArrayList<String> generateList(DiagnosisBean diagnosis)
+	{
+		Query q = getSession().createQuery("from EncounterBean where diagnosis = :diag");
+
+        q.setString("diag", diagnosis.getDiagnosisName());
+        
+        ArrayList<EncounterBean> enc = (ArrayList<EncounterBean>) q.list();
+        HashSet<String> set = new HashSet<String>();
+        ArrayList<String> result = new ArrayList<String>();
+        for(EncounterBean e : enc)
+        {
+        	if(!set.contains(e.getPatientId().getName()))
+        	{
+        		set.add(e.getPatientId().getName());
+        		result.add(e.getPatientId().getName());
+        	}
+        	
+        }
+        
+        return result;
 	}
 }

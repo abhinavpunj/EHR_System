@@ -52,6 +52,11 @@ angular.module('BasicHttpAuthExample', [
 				controller : 'EncounterController'
 			})
 			
+			.when('/listPatients', {
+				templateUrl : 'modules/nurse/views/ListPatients.jsp',
+				controller : 'ListPatientsController'
+			})
+			
 			.when('/patientDetails/:patientId', {
 				templateUrl : 'modules/doctor/views/Doctor-PatientProfile.jsp',
 				controller : 'PatientProfileController',

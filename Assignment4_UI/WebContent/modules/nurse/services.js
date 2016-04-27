@@ -18,6 +18,28 @@ app.factory('NurseService',
         return service;
     }]);
 
+app.factory('ListPatientsService',
+	    ['Base64', '$http', '$cookieStore', '$rootScope', '$timeout',
+	    function (Base64, $http, $cookieStore, $rootScope, $timeout) {
+	        var service = {};
+
+	        service.GetDiagnosis = function (callback) {
+	        	$http.get('http://localhost:8080/Assignment4_REST/rest/doctor/getDiagnosis')
+	            .success(function (data, status) {
+	                callback(data);
+	            });
+			}
+	        
+	        service.GenerateList = function (diagnosis, callback) {
+	        	$http.post('http://localhost:8080/Assignment4_REST/rest/nurse/generateList', diagnosis)
+	            .success(function (data, status) {
+	                callback(data);
+	            });
+			}
+	        
+	        return service;
+	    }]);
+
 app.factory('SearchPatientService',
 	    ['Base64', '$http', '$cookieStore', '$rootScope', '$timeout',
 	    function (Base64, $http, $cookieStore, $rootScope, $timeout) {

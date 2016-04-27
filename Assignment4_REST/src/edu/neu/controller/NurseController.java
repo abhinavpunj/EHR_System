@@ -1,5 +1,6 @@
 package edu.neu.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.annotation.security.RolesAllowed;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Controller;
 
 import com.mysql.fabric.xmlrpc.base.Data;
 
+import edu.neu.bean.DiagnosisBean;
 import edu.neu.bean.EncounterBean;
 import edu.neu.bean.PatientBean;
 import edu.neu.hibernate.PatientDAO;
@@ -57,6 +59,14 @@ public class NurseController {
 	public void addEncounter(EncounterBean encounter)
 	{
 		patientDao.addEncounterData(encounter);
+	}
+	
+	@POST
+	@Path("/generateList")
+	@RolesAllowed("nurse")
+	public ArrayList<String> generatePatientList(DiagnosisBean diagnosis)
+	{
+		return patientDao.generateList(diagnosis);
 	}
 		
 	

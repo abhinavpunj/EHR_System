@@ -97,7 +97,7 @@ public class DoctorController {
 	}
 	
 	@GET
-	@RolesAllowed("doctor")
+	@RolesAllowed({"doctor", "nurse"})
 	@Path("/getDiagnosis")
 	public ArrayList<DiagnosisBean> getDiagnosis(){
 		ArrayList<DiagnosisBean> diagnosis = doctorDao.getAllDiagnosis();
