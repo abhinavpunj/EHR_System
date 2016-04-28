@@ -36,7 +36,7 @@ public class TestMain {
 		
 		UserAccountBean ua = new UserAccountBean();
 		ua.setUsername("abhinavpunj");
-		ua.setPassword("abc");
+		ua.setPassword("900150983cd24fb0d6963f7d28e17f72");
 		ua.setPerson(person);
 		ua.setRole(docRole);
 		
@@ -45,7 +45,7 @@ public class TestMain {
 		
 		UserAccountBean ua2 = new UserAccountBean();
 		ua2.setUsername("nurse");
-		ua2.setPassword("abc");
+		ua2.setPassword("900150983cd24fb0d6963f7d28e17f72");
 		ua2.setPerson(nurse);
 		ua2.setRole(nurseRole);
 		
@@ -54,7 +54,7 @@ public class TestMain {
 		
 		UserAccountBean ua3 = new UserAccountBean();
 		ua3.setUsername("lab");
-		ua3.setPassword("abc");
+		ua3.setPassword("900150983cd24fb0d6963f7d28e17f72");
 		ua3.setPerson(lab);
 		ua3.setRole(labRole);
 		

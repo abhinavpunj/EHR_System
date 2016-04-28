@@ -1,7 +1,7 @@
 <div style="width: 35%; text-align: center;" class="container">
 <div ng-show="error" class="alert alert-danger">{{error}}</div>
 <form class="form-signin" name="form" ng-submit="login()" role="form">
-<h2 class="form-signin-heading">Please sign in</h2>
+<h2 class="form-signin-heading">EHR System</h2>
         <label class="sr-only" for="username">Username</label>
         <input type="text" name="username" id="username" placeholder="Username" class="form-control" ng-model="username" required />
         <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>

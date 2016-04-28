@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import edu.neu.bean.PatientBean;
 import edu.neu.bean.PersonBean;
 import edu.neu.bean.UserAccountBean;
+import edu.neu.security.HashEncode;
 
 @Component
 public class LoginDAO extends DAO {
@@ -20,6 +21,7 @@ public class LoginDAO extends DAO {
 	{
 		try 
         {
+			user.setPassword(HashEncode.generateHash(user.getPassword(), HashEncode.ALGO.MD5));
         	Query q = getSession().createQuery("from UserAccountBean where username = :username1 and password = :password1");
 	        q.setString("username1", user.getUsername());
 	        q.setString("password1", user.getPassword());

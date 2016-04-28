@@ -62,7 +62,7 @@
 				<div class="col-lg-3"></div>
 				<div class="col-lg-8">
 					<input type="button" ng-click="updateOrder()" class="btn btn-primary btn-md" value="Update" />
-					<input type="button" class="btn btn-primary btn-md" value="Send Notification" />
+					<!-- <input type="button" class="btn btn-primary btn-md" value="Send Notification" /> -->
 				</div>
 				<div class="col-lg-1"></div>
 				</div>
