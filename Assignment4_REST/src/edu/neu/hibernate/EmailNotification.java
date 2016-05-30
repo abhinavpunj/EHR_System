@@ -36,8 +36,8 @@ public class EmailNotification {
 		properties.put("mail.debug", "true");
 		properties.put("mail.store.protocol", "pop3");
 		properties.put("mail.transport.protocol", "smtp");
-		final String username = "abhinavpunj@gmail.com";
-		final String password = "DADDY2101";
+		final String username = "####@gmail.com";
+		final String password = "####";
 		try {
 			
 			Session session = Session.getDefaultInstance(properties);
